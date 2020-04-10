@@ -50,14 +50,28 @@ class List:
             newnode=Node(item)
             newnode.setnxt(n.getnxt())
             n.setnxt(newnode)
-    def test(self,item):
+    def deletenode(self,item):
+        
+        """The delete node function can also be written with the help 
+        of two pointers viz. Current aand Previous"""
+        
+        
+        if self.head is None:
+            print('No items in linked list')
+        if self.head.getdata()==item:
+            self.head=self.head.getnxt()
         n=self.head
         while n.getnxt() !=None:
             if n.getnxt().getdata()==item:
                 break
             n=n.getnxt()
-        print(n.getdata())
-        
+        if n.getnxt() is None:
+            print('item not found')
+        else:
+            nxtnode=n.getnxt().getnxt()
+            n.setnxt(nxtnode)
+
+
 
 
 
@@ -69,5 +83,5 @@ mylist.insertAfter(50,60)
 mylist.addatend(70)
 mylist.addatend(80)
 mylist.addatend(90)
-mylist.test(70)
+mylist.deletenode(40)
 mylist.printList()
