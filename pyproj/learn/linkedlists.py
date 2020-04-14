@@ -26,6 +26,9 @@ class List:
         while (temp): 
             print(temp.getdata())
             temp = temp.getnxt()
+            
+            
+            
     def addatend(self,data):
         newnode=Node(data)
         if self.head is None:
@@ -50,6 +53,30 @@ class List:
             newnode=Node(item)
             newnode.setnxt(n.getnxt())
             n.setnxt(newnode)
+            
+            
+            
+            
+    def insertbefore(self,node,item):
+        
+        if node == self.head.data:
+            newnode=Node(item)
+            newnode.setnxt(self.head)
+            self.head=newnode
+            return
+        n=self.head
+        while n.nxt is not None:
+            if n.nxt.data==node:
+                break
+            n=n.nxt
+            
+        if n.nxt is None:
+            print('No Items')
+        else:
+            newnode=Node(item)
+            newnode.setnxt(n.getnxt())
+            n.setnxt(newnode)
+            
     def deletenode(self,item):
         
         """The delete node function can also be written with the help 
@@ -71,6 +98,77 @@ class List:
             nxtnode=n.getnxt().getnxt()
             n.setnxt(nxtnode)
 
+    def addatindex(self,index,item):
+        if index==1:
+            self.addatbegin(item)
+            return
+
+        i=1
+        n=self.head
+        while i< index-1 and n.getnxt() is not Node:
+            i+=1
+            n=n.getnxt()
+        if n is None:
+            print('no items')
+        else:
+            newnode=Node(item)
+            newnode.setnxt(n.getnxt())
+            n.setnxt(newnode)
+            
+    def len(self):
+        if self.head==None:
+            return 0
+        n= self.head
+        count=0
+        while n is not None:
+            count+=1
+            n=n.getnxt()
+        return count
+    
+    def search(self,data):
+        i=1
+        if self.head is None:
+            return
+        n=self.head
+        #count=0
+        while n is not None:
+            if n.getdata==data:
+                count=i
+            i+-1
+            n=n.getnxt()
+        print(f"Found node {data} at index {count}")
+                
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,4 +182,17 @@ mylist.addatend(70)
 mylist.addatend(80)
 mylist.addatend(90)
 mylist.deletenode(40)
+mylist.insertbefore(50,40)
+mylist.addatindex(8,100)
+mylist.search(70)
+
+#========================================================>
+
 mylist.printList()
+
+
+
+print('--------------------------------------------------------------------')
+
+
+print(mylist.len())

@@ -10,7 +10,7 @@ def alphabet_position(text):
         print(alphabeths)
         #return " ".join(str(alphabeths.get(char)) for char in text.lower() if char in alphabeths.keys())    
 alphabet_position('shivam')
-'''
+
 d = {L: i for i, L in enumerate('abcdefghijklmnopqrstuvwxyz', 1)}
 print(d)
 new='zaba'
@@ -20,3 +20,6 @@ for i in new:
     pos=d.get(i)
     p.append(l[pos-1])
 print(p)    
+'''
+l=[1,2,3,4,5,6,42,7,8,9,10,11,12,13,14,42]
+print(l.index(42))
