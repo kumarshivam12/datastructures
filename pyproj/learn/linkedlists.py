@@ -130,23 +130,51 @@ class List:
         if self.head is None:
             return
         n=self.head
-        #count=0
+        count=0
         while n is not None:
-            if n.getdata==data:
+            if n.getdata()==data:
                 count=i
-            i+-1
+                print(f"Found node {data} at index {count}")
+            i+=1
             n=n.getnxt()
-        print(f"Found node {data} at index {count}")
-                
             
+    def deleteelementbyvalue(self,data):
+        if self.head==None:
+            return
+        n=self.head
+        while n.getnxt() is not None:
+            if n.getnxt().getdata()==data:
+                break
+            n=n.getnxt()
+        if n.getnxt()==None:
+            return
+        else:
+            n.setnxt(n.getnxt().getnxt())
+            
+    def reverse(self):
+        prev=None
+        current=self.head
+        while current is not None:
+            nextpointer=current.nxt
+            current.nxt=prev
+            prev=current
+            current=nextpointer
+        self.head=prev
 
 
-
-
-
-
-
-
+    def recreverse(self,current,prev):
+        if current.nxt is None :
+            self.head=current
+            current.nxt = prev
+            return
+        nextpointer=current.nxt
+        current.nxt=prev
+        self.recreverse(nextpointer,current)
+        
+    def callreverse(self):
+        current=self.head
+        prev=None
+        self.recreverse(current,prev)
 
 
 
@@ -184,7 +212,8 @@ mylist.addatend(90)
 mylist.deletenode(40)
 mylist.insertbefore(50,40)
 mylist.addatindex(8,100)
-mylist.search(70)
+mylist.deleteelementbyvalue(50)
+
 
 #========================================================>
 
@@ -195,4 +224,9 @@ mylist.printList()
 print('--------------------------------------------------------------------')
 
 
-print(mylist.len())
+print('length of list is',mylist.len())
+mylist.search(70)
+mylist.reverse()
+mylist.printList()
+mylist.callreverse()
+mylist.printList()
