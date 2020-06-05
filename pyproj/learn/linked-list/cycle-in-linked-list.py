@@ -57,7 +57,7 @@ class list:
             length+=1
         print('length of loop is',length)  #if there is cycle then this lenght is the lenght of cycle
         #there is no extra cost for calculating the length
-        if(not fast):                      
+        if(not fast):
             return
         
         #driver to find the begening of the loop
