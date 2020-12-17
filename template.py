@@ -12,12 +12,3 @@ def li(): return list(map(int, sys.stdin.readline().split()))
 def mi(): return map(int, sys.stdin.readline().split())
 def li2(N): return [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
-'''
-uses :
-
-d = defaultdict(int)
-d[key] += value
-a = Counter(A).most_common()
-list(accumulate(A))
-
-'''
